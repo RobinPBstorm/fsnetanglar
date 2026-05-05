@@ -1,0 +1,21 @@
+<p>--- One Way Binding ---</p>
+
+<p>{{oneway()}}</p>
+
+<p>--- Two Way Binding ---</p>
+
+<input [disabled]="!active()" [ngModel]="twoway()" (ngModelChange)="twoway.set($event)">
+
+<p>{{twoway()}}</p>
+
+<p>- with model -</p>
+
+<input [disabled]="!active()" [(ngModel)]="twowaymodel">
+
+<p>{{twowaymodel()}}</p>
+
+<p>--- Event Binding ---</p>
+
+<button (click)="resetValues()" >Reset</button>
+
+<button (click)="onOff()" >ON/OFF</button>
