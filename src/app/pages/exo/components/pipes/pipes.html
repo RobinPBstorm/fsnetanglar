@@ -1,1 +1,11 @@
-<p>pipes works!</p>
+<br>
+
+<img src="/200w.gif">
+
+<br>
+
+<p>{{secondes() | chrono}}</p>
+
+<button [disabled]="interval" (click)="startCount()" >Start</button>
+<button [disabled]="!interval" (click)="stopCount()">Pause</button>
+<button [disabled]="secondes() === 0 && !interval" (click)="resetCount()">Reset</button>

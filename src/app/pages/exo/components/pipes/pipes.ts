@@ -1,23 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { ChronoPipe } from '../../../../shared/pipes/chrono-pipe';
 
 @Component({
   selector: 'app-pipes',
-  imports: [],
+  imports: [ChronoPipe],
   templateUrl: './pipes.html',
   styleUrl: './pipes.scss',
 })
 export class Pipes {
+  interval: number | undefined;
 
-  interval : number | undefined;
+  secondes = signal<number>(0);
 
-  startCount(){
+  startCount() {
     this.interval = setInterval(() => {
-
-    }, 1000)
+      this.secondes.set(this.secondes() + 1);
+    }, 1000);
   }
 
-  stopCount(){
+  stopCount() {
     clearInterval(this.interval);
+    this.interval = undefined;
   }
 
+  resetCount() {
+    this.stopCount()
+    this.secondes.set(0);
+  }
 }

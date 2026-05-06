@@ -1,0 +1,30 @@
+
+<!--Nouvelle version-->
+@if (age() >= 18) {
+  <p>Tu es majeur bravo !</p>
+} @else {
+  <p>Tu es mineur, t'aimes le charbon.</p>
+}
+
+<!--Antérieur à angular 20-->
+<div *ngIf="age() >= 18">
+  <p>Tu es majeur, bravo mais avec une astérisque.</p>
+</div>
+<div *ngIf="age() < 18">
+  <p>Tu es mineur, pas bravo, mais avec une astérisque.</p>
+</div>
+
+
+<!--Nouvelle Version-->
+
+<ul>
+  @for (u of users(); track $index) {
+    <li>{{$index}} - {{u}}</li>
+  }
+</ul>
+
+<!--Antérieur-->
+
+<ul>
+  <li *ngFor="let u of users(); let i = index">{{i}} - {{u}}</li>
+</ul>

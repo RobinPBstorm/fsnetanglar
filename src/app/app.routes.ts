@@ -5,6 +5,7 @@ import { Binding as bdemo } from './pages/demo/components/binding/binding';
 import { Binding as bexo } from './pages/exo/components/binding/binding';
 import { Pipes as dpipes } from './pages/demo/components/pipes/pipes';
 import { Pipes as epipes } from './pages/exo/components/pipes/pipes';
+import { Directives } from './pages/demo/components/directives/directives';
 
 export const routes: Routes = [
   {
@@ -18,6 +19,10 @@ export const routes: Routes = [
       {
         path: 'pipes',
         component: dpipes,
+      },
+      {
+        path: 'directives',
+        component: Directives,
       },
     ],
   },
