@@ -1,0 +1,10 @@
+<p>COMPONENT PARENT</p>
+
+<input [(ngModel)]="firstnameParent">
+
+<p>{{nombreDeEnfant()}}</p>
+
+<app-enfant (nombre)="receiveNumber($event)" [firstname]="firstnameParent()"></app-enfant>
+
+<p>FIN COMPONENT PARENT</p>
+

@@ -17,7 +17,6 @@ export class Directives {
     this.isAdult.set(this.age() >= 18);
   }
 
-
   // Exo 2
 
   url = signal<string | undefined>(undefined);
