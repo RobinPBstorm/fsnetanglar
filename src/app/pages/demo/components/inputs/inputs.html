@@ -4,7 +4,9 @@
 
 <p>{{nombreDeEnfant()}}</p>
 
-<app-enfant (nombre)="receiveNumber($event)" [firstname]="firstnameParent()"></app-enfant>
+<app-enfant (nombre)="receiveNumber($event)" [firstname]="firstnameParent()">
+  <p>Petit texte venant du parent dans un ng-content</p>
+</app-enfant>
 
 <p>FIN COMPONENT PARENT</p>
 
