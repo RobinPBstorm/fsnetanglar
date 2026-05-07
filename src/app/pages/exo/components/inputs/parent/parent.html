@@ -1,7 +1,7 @@
 
 <input [(ngModel)]="item">
 
-<button>Ajouter</button>
+<button (click)="add()">Ajouter</button>
 
 
-<app-enfant [list]="list()"></app-enfant>
+<app-enfant [list]="list()" (idToRemove)="removeItem($event)"></app-enfant>

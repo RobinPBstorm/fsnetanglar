@@ -1,1 +1,5 @@
-<p>enfant works!</p>
+<ul>
+  @for (item of list(); track $index) {
+    <li>{{item}} <button (click)="remove($index)">-</button></li>
+  }
+</ul>

@@ -17,4 +17,8 @@ export class Parent {
   add(){
     this.list.set([...this.list(), this.item()]);
   }
+
+  removeItem(id: number) {
+    this.list().splice(id, 1, "ram");
+  }
 }
