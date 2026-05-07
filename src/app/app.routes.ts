@@ -10,6 +10,9 @@ import { Directives as edirectives } from './pages/exo/components/directives/dir
 import { Inputs } from './pages/demo/components/inputs/inputs';
 import { Parent } from './pages/exo/components/inputs/parent/parent';
 import { ServiceComponent } from './pages/demo/components/service-component/service-component';
+import { ListCourseAvecService } from './pages/exo/components/services/list-course-avec-service';
+import { Forms as formdemo } from './pages/demo/components/forms/forms';
+import { Forms as formexo } from './pages/exo/components/forms/forms';
 
 export const routes: Routes = [
   {
@@ -36,6 +39,10 @@ export const routes: Routes = [
         path: 'services',
         component: ServiceComponent,
       },
+      {
+        path: 'forms',
+        component: formdemo,
+      },
     ],
   },
   {
@@ -61,6 +68,10 @@ export const routes: Routes = [
       {
         path: 'services',
         component: ListCourseAvecService,
+      },
+      {
+        path: 'forms',
+        component: formexo,
       },
     ],
   },

@@ -1,0 +1,67 @@
+<!--nom-->
+<!--quantité-->
+<!--prix-->
+<!--description-->
+<form [formGroup]="articleForms!" (ngSubmit)="sendForm()">
+  <label for="Nom">Nom de l'article</label>
+  <input id="Nom" type="text" formControlName="name">
+  @if (!articleForms!.valid &&
+  articleForms!.get("name")!.touched &&
+  !articleForms!.get("name")!.valid) {
+    <p class="error">Le nom est requis</p>
+  }
+  <br>
+
+  <label for="Quantite">Quantité</label>
+  <input id="Quantite" type="number" min="0" formControlName="quantity">
+  @if (!articleForms!.valid &&
+  articleForms!.get("quantity")!.touched &&
+  !articleForms!.get("quantity")!.valid) {
+    @if (articleForms!.get("quantity")!.errors!["required"]) {
+      <p class="error">La quantité est requise</p>
+    } @else if (articleForms!.get("quantity")!.errors!["min"]) {
+      <p class="error">La quantité doit suppérieure ou égale à 1</p>
+    }
+  }
+  <br>
+
+  <label for="Prix">Prix</label>
+  <input id="Prix" type="number" step="0.01" formControlName="price">
+  @if (!articleForms!.valid &&
+  articleForms!.get("price")!.touched &&
+  !articleForms!.get("price")!.valid) {
+    @if (articleForms!.get("price")!.errors!["required"]) {
+      <p class="error">Le prix est requise</p>
+    } @else if (articleForms!.get("price")!.errors!["min"]) {
+      <p class="error">Le prix doit suppérieur ou égal à 0</p>
+    }
+  }
+  <br>
+
+  <label for="Description">Description</label>
+  <textarea id="Description" formControlName="description"></textarea>
+  @if (!articleForms!.valid &&
+  articleForms!.get("description")!.touched &&
+  !articleForms!.get("description")!.valid) {
+    @if (articleForms!.get("description")!.errors!["required"]) {
+      <p class="error">La description est requise</p>
+    } @else if (articleForms!.get("description")!.errors!["minlength"]) {
+      <p class="error">La decription doit faire minimum 5 caratères</p>
+    } @else if (articleForms!.get("description")!.errors!["invalidContent"]) {
+      <p class="error">La decription contient un mot interdit : {{articleForms!.get("description")!.errors!["invalidContent"]}}</p>
+    }
+  }
+  <br>
+
+  @for (review of getReviews(); track $index) {
+    <div [formGroup]="review">
+      <label for="review{{$index}}">Avis n° {{$index + 1}}</label>
+      <textarea id="review{{$index}}"></textarea>
+      <button type="button" (click)="removeReview($index)">Retirer l'avis</button>
+    </div>
+  }
+  <button type="button" (click)="addReview()">Ajouter un avis</button>
+
+  <button type="submit">Valider</button>
+
+</form>
