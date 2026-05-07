@@ -47,8 +47,7 @@ export class Forms {
   }
 
   removeReview(index: number) {
-    console.log(this.reviews);
-    this.reviews.controls.splice(index, 1);
+    this.reviews.removeAt(index)
   }
 
   getReviews() : FormGroup[] {
@@ -59,7 +58,6 @@ export class Forms {
     if (this.articleForms?.valid) {
       console.log("mon formulaire est envoyé");
     } else {
-      console.error(this.articleForms?.get("description")?.errors)
       console.error("Une erreur est survenue");
     }
   }

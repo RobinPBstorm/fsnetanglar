@@ -53,10 +53,10 @@
   }
   <br>
 
-  @for (review of getReviews(); track $index) {
-    <div [formGroup]="review">
+  @for (formGroup of getReviews(); track $index) {
+    <div [formGroup]="formGroup">
       <label for="review{{$index}}">Avis n° {{$index + 1}}</label>
-      <textarea id="review{{$index}}"></textarea>
+      <textarea id="review{{$index}}" formControlName="review"></textarea>
       <button type="button" (click)="removeReview($index)">Retirer l'avis</button>
     </div>
   }
