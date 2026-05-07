@@ -1,0 +1,11 @@
+<h1>Voici ma liste venant du service:</h1>
+
+<input [(ngModel)]="item">
+
+<button (click)="add()">Ajouter</button>
+
+<ul>
+  @for (item of listLocal(); track $index){
+    <li>{{$index}} - {{item}}</li>
+  }
+</ul>

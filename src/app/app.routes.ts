@@ -9,6 +9,7 @@ import { Directives as ddirectives } from './pages/demo/components/directives/di
 import { Directives as edirectives } from './pages/exo/components/directives/directives';
 import { Inputs } from './pages/demo/components/inputs/inputs';
 import { Parent } from './pages/exo/components/inputs/parent/parent';
+import { ServiceComponent } from './pages/demo/components/service-component/service-component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,10 @@ export const routes: Routes = [
       {
         path: 'inputs',
         component: Inputs,
+      },
+      {
+        path: 'services',
+        component: ServiceComponent,
       },
     ],
   },

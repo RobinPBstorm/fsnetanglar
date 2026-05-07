@@ -57,3 +57,25 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## Create a Service
+
+```bash
+#verion compléte
+ng generate service nom_dossier/nom_service
+
+#version réduite
+ng g s nom_dossier/nom_service
+```
+
+## Service Injection
+
+L'injection du service passe par le constructer
+
+```ts
+constructor(
+  private _service: Service
+){}
+
+```
