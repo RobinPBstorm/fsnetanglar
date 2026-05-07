@@ -58,6 +58,10 @@ export const routes: Routes = [
         path: 'inputs',
         component: Parent,
       },
+      {
+        path: 'services',
+        component: ListCourseAvecService,
+      },
     ],
   },
   // Doit rester en dernier, sinon bypass les autres routes.

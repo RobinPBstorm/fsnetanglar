@@ -1,0 +1,30 @@
+<h1>Exercice sur les services</h1>
+<p>Optimiser la liste de course avec l’utilisation d’un service qui gère la liste et les
+  méthodes qui peuvent s’y appliquer;</p>
+<p>Ajouter la possibilité de gérer le nombre d’articles voulu (Ex : Lait x 6, Tomates x 3, …)</p>
+
+<h3>Pour ajouter un article:</h3>
+
+<label>Nom de l'article: </label>
+<input [(ngModel)]="item">
+<br>
+
+<label>Quantité: </label>
+<input [(ngModel)]="quantity"
+        type="number"
+        min="0">
+<br>
+
+<button (click)="add()">Ajouter</button>
+
+<h3>Voici la liste:</h3>
+
+<ul>
+  @for (line of list().lines;track $index) {
+    <li>
+      <b>{{line.name}}</b> - {{line.quantity}}
+      <button (click)="removeOne(line.name)">-</button>
+      <button (click)="addOne(line.name)">+</button>
+    </li>
+  }
+</ul>
