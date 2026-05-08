@@ -13,6 +13,7 @@ import { ServiceComponent } from './pages/demo/components/service-component/serv
 import { ListCourseAvecService } from './pages/exo/components/services/list-course-avec-service';
 import { Forms as formdemo } from './pages/demo/components/forms/forms';
 import { Forms as formexo } from './pages/exo/components/forms/forms';
+import { Routing } from './pages/exo/components/routing/routing';
 
 export const routes: Routes = [
   {
@@ -78,6 +79,10 @@ export const routes: Routes = [
         path: 'forms',
         component: formexo,
       },
+      {
+        path: 'routing',
+        component: Routing,
+      }
     ],
   },
   // Doit rester en dernier, sinon bypass les autres routes.
