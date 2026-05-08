@@ -72,6 +72,4 @@ export class Forms {
       this.personForm.markAllAsTouched();
     }
   }
-
-  protected readonly minLength = minLength;
 }

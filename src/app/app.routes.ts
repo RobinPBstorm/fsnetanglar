@@ -81,7 +81,8 @@ export const routes: Routes = [
       },
       {
         path: 'routing',
-        component: Routing,
+        loadChildren: () =>
+          import('../app/pages/exo/components/routing/exo-routing.routes').then(r => r.exoRoutingRoutes)
       }
     ],
   },

@@ -1,0 +1,22 @@
+<h1>Voici la liste des fans:</h1>
+<button title="ajouter" (click)="ajouterFan()">➕</button>
+<table>
+  <thead>
+  <th>Prénom</th>
+  <th>Nom de famille</th>
+  <th>Actions</th>
+  </thead>
+  <tbody>
+    @for (person of fans(); track $index) {
+      <tr>
+        <td>{{person.firstName}}</td>
+        <td>{{person.lastName}}</td>
+        <td>
+          <button title="voir" (click)="seeFan($index)">👁️</button>
+          <button title="éditer" (click)="editFan($index)">✏️</button>
+          <button title="supprimer" (click)="removeFan($index)">❌</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

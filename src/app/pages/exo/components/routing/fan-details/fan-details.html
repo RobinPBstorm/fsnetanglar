@@ -1,0 +1,16 @@
+<h1>Information sur ce fan</h1>
+<button title="Retour à la liste" (click)="goToList()">📋</button>
+<button title="éditer" (click)="editFan()">✏️</button>
+
+<h2>Information personnelle</h2>
+
+<p><b>Nom: </b> {{fan!.lastName}}</p>
+<p><b>Prénom: </b> {{fan!.firstName}}</p>
+<p><b>Date de naissance: </b> {{fan!.birthdate | date:'dd MM yyyy'}}</p>
+
+<h2>Séries préférées</h2>
+<ul>
+  @for (serie of fan!.series;track $index){
+    <li>{{serie}}</li>
+  }
+</ul>

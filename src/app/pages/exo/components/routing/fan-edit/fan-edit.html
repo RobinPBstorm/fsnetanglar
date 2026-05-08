@@ -1,0 +1,54 @@
+
+@if (index !== undefined) {
+  <h1>Formulaire pour modifier un fan existant: </h1>
+  <button title="Retour à la liste" (click)="goToList()">📋</button>
+  <button title="voir" (click)="gotoFan()">👁️</button>
+} @else {
+  <h1>Formulaire pour ajouter un nouveau fan: </h1>
+  <button title="Retour à la liste" (click)="goToList()">📋</button>
+}
+
+
+<form [formGroup]="fanForm" (ngSubmit)="submitForm()">
+  <label for="firstName">Prénom: </label>
+  <input type="text" id="firstName" formControlName="firstName">
+  @if (fanForm.get("firstName")!.touched &&
+  !fanForm.get("firstName")!.valid) {
+    <p class="error">Le prénom est requis</p>
+  }
+  <br>
+
+  <label for="lastName">Nom de famille: </label>
+  <input type="text" id="lastName" formControlName="lastName">
+  @if (fanForm.get("lastName")!.touched &&
+  !fanForm.get("lastName")!.valid) {
+    <p class="error">Le nom de famille est requis</p>
+  }
+  <br>
+
+  <label for="birthDate">Date de naissance: </label>
+  <input type="date" id="birthDate" formControlName="birthDate">
+  @if (fanForm.get("birthDate")!.touched &&
+  !fanForm.get("birthDate")!.valid) {
+    @if (fanForm.get("birthDate")!.errors!["ageMin"]) {
+      <p class="error">Il faut avoir minimum {{fanForm.get("birthDate")!.errors!["ageMin"]["expected"]}} ans pour s'inscrire</p>
+    } @else if (fanForm.get("birthDate")!.errors!["invalidDate"]) {
+      <p class="error">{{fanForm.get("birthDate")!.errors!["invalidDate"]}}</p>
+    } @else {
+      <p class="error">La date de naissance est requise</p>
+    }
+  }
+  <br>
+
+  @for (formGroup of getSeries(); track $index) {
+    <div [formGroup]="formGroup">
+      <label for="serie{{$index+1}}"></label>
+      <input type="text" id="serie{{$index+1}}" formControlName="serie">
+      <button type="button" (click)="removeSerie($index)">-</button>
+      <br>
+    </div>
+  }
+  <button type="button" (click)="addSerie()">+</button><br>
+
+  <button type="submit">valider</button>
+</form>
