@@ -12,3 +12,81 @@
 <h3>Bonus 2</h3>
 <p>Pour chaque persone, on veut au moins 3 séries préférées (juste le nom).</p>
 
+<h2>Voici le formulaire: </h2>
+
+<form [formGroup]="personForm" (ngSubmit)="submitForm()">
+  <label for="firstName">Prénom: </label>
+  <input type="text" id="firstName" formControlName="firstName">
+  @if (personForm.get("firstName")!.touched &&
+    !personForm.get("firstName")!.valid) {
+    <p class="error">Le prénom est requis</p>
+  }
+  <br>
+
+  <label for="lastName">Nom de famille: </label>
+  <input type="text" id="lastName" formControlName="lastName">
+  @if (personForm.get("lastName")!.touched &&
+  !personForm.get("lastName")!.valid) {
+    <p class="error">Le nom de famille est requis</p>
+  }
+  <br>
+
+  <label for="birthDate">Date de naissance: </label>
+  <input type="date" id="birthDate" formControlName="birthDate">
+  @if (personForm.get("birthDate")!.touched &&
+  !personForm.get("birthDate")!.valid) {
+    @if (personForm.get("birthDate")!.errors!["ageMin"]) {
+      <p class="error">Il faut avoir minimum {{personForm.get("birthDate")!.errors!["ageMin"]["expected"]}} ans pour s'inscrire</p>
+    } @else if (personForm.get("birthDate")!.errors!["invalidDate"]) {
+      <p class="error">{{personForm.get("birthDate")!.errors!["invalidDate"]}}</p>
+    } @else {
+      <p class="error">La date de naissance est requise</p>
+    }
+  }
+  <br>
+
+  @for (formGroup of getSeries(); track $index) {
+    <div [formGroup]="formGroup">
+      <label for="serie{{$index+1}}"></label>
+      <input type="text" id="serie{{$index+1}}" formControlName="serie">
+      <button type="button" (click)="removeSerie($index)">-</button>
+      <br>
+    </div>
+  }
+  <button type="button" (click)="addSerie()">+</button><br>
+  @if (personForm.get("series")!.touched &&
+  !personForm.get("series")!.valid &&
+  personForm.get("series")!.errors &&
+  personForm.get("series")!.errors!["minLength"]) {
+    <p class="error">Il faut écrire minimum {{personForm.get("series")!.errors!["minLength"]}} séries préférées</p>
+  }
+
+  <button type="submit">valider</button>
+</form>
+
+<h2>Voici la liste des gens inscrits:</h2>
+<table>
+  <thead>
+    <th>Prénom</th>
+    <th>Nom de famille</th>
+    <th>Date de naissance</th>
+    <th>Séries préféré</th>
+  </thead>
+  <tbody>
+    @for (person of Persons; track $index) {
+      <tr>
+        <td>{{person.firstName}}</td>
+        <td>{{person.lastName}}</td>
+        <td>{{person.birthdate}}</td>
+        <td>
+          <ul>
+            @for (serie of person.series; track $index)
+            {
+              <li>{{serie}}</li>
+            }
+          </ul>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
