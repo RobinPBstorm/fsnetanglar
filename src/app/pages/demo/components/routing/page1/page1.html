@@ -1,0 +1,11 @@
+<a routerLink="/demo/routing/page1">Page1</a>
+&nbsp;
+<a routerLink="/demo/routing/page2">Page2</a>
+
+<p>page1 works!</p>
+
+<button (click)="navigateToPage2()">vers la page 2</button>
+<br>
+<input type="number" [(ngModel)]="index">
+
+<button (click)="navigateToPage2WithIndex()">vers la page 2</button>

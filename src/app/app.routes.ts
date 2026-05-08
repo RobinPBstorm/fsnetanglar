@@ -43,6 +43,11 @@ export const routes: Routes = [
         path: 'forms',
         component: formdemo,
       },
+      {
+        path: 'routing',
+        loadChildren: () =>
+              import('../app/pages/demo/components/routing/routing.routes').then(r => r.routes)
+      }
     ],
   },
   {
